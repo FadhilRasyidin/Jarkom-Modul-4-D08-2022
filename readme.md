@@ -14,6 +14,7 @@ Kendala:
 2. hehe
 
  ## Topologi
+ ![soal shift 4 1](https://user-images.githubusercontent.com/73109893/203557069-d6c56215-1f3e-4103-8b24-a9934e1fbcb8.png)
 
  ## CPT - VLSM
   ### Pembagian Subnet
