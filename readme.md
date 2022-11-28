@@ -18,7 +18,7 @@ Kendala:
 
  # CPT - VLSM
   ### Pembagian Subnet
-  ![jarkom modul 4 vlsm](https://user-images.githubusercontent.com/73109893/203556279-84193c96-a612-477b-938c-e48f6bae89af.png)
+  ![Topologi VLSM](https://user-images.githubusercontent.com/90826711/204241840-f3f9db11-9734-4a8b-b8b6-872ebe6096df.png)
 
   ### Perhitungan subnet
   <img width="183" alt="image" src="https://user-images.githubusercontent.com/73109893/203556405-eb786e6a-7510-49f2-b771-49eecad16077.png">
