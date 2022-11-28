@@ -33,6 +33,8 @@ Kendala:
   #### Subnet
 
 # GNS3 - CIDR
+![Topologi](https://user-images.githubusercontent.com/90826711/204237344-512187d4-90b3-4689-9dc5-6f97ae98c052.png)
+
 ## Konfigurasi Node di GNS3
 - **The Minister**
     ```
