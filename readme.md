@@ -21,13 +21,13 @@ Kendala:
   ![Topologi VLSM](https://user-images.githubusercontent.com/90826711/204242054-e4c7c6ea-171c-461c-9a29-73fffb249afa.png)
   
   ### Perhitungan subnet
-  <img width="183" alt="image" src="https://user-images.githubusercontent.com/73109893/203556405-eb786e6a-7510-49f2-b771-49eecad16077.png">
+  ![Subnet](https://user-images.githubusercontent.com/90826711/204242306-cb4a6edd-79bf-437a-b69d-a3c4cf340073.jpg)
 
   ### VLSM Tree
-  ![VLSM Tree](https://user-images.githubusercontent.com/73109893/203556653-f56c19d3-b2c9-4077-9a4d-6714488d0301.png)
+  ![VLSM Tree](https://user-images.githubusercontent.com/90826711/204242329-36e55674-628e-44ef-b7f9-fd36ea3c6c4d.png)
 
   ### Pembagian IP
-  ![messageImage_1669205970740](https://user-images.githubusercontent.com/73109893/203556754-e23763d2-ccb3-42a9-ab54-a65fecb3814a.jpg)
+  ![VLSM Table](https://user-images.githubusercontent.com/90826711/204242388-a4584695-0be5-493e-82df-259683a3a41d.jpg)
 
   ### Routing
   #### Subnet
