@@ -34,402 +34,54 @@ Kendala:
   Setelah dilakukan subnetting maka satu node dengan node lainnya akan terhubung seperti gambar
   ![CPT](https://user-images.githubusercontent.com/90826711/204238402-aea1c30c-54b4-4db5-bc22-718f68389557.png)
 
-
 # GNS3 - CIDR
-![Topologi](https://user-images.githubusercontent.com/90826711/204237344-512187d4-90b3-4689-9dc5-6f97ae98c052.png)
+
+- **Langkah 1** Menentukan subnet yang ada dalam topologi dan lakukan labelling netmask.
+
+![A](https://user-images.githubusercontent.com/81240334/204345658-26d781d2-675d-4773-801e-d53f97bfd57b.jpg)
+
+- **Langkah 2** Menggabungkan subnet paling bawah di dalam topologi. Pada teknik CIDR subnet gabungan akan memiliki netmask yang 1 tingkat di atas subnet terbesar yang digabungkan.
+
+![B](https://user-images.githubusercontent.com/81240334/204345665-58073dec-1e78-4613-9831-5554cabf6b06.jpg)
+> - B1 adalah penggabungan subnet A3 dengan A4 dengan netmask /23
+> - B2 adalah penggabungan subnet A8 dengan A18 dengan netmask /23
+
+![C](https://user-images.githubusercontent.com/81240334/204345669-42c3bca5-835b-4ad5-ae13-ea6d8eba673d.jpg)
+> - C1 adalah penggabungan subnet A1 dengan B1 dengan netmask /21
+> - C2 adalah penggabungan subnet A9 dengan B2 dengan netmask /22
+> - C3 adalah penggabungan subnet A15 dengan A16 dengan netmask /23
+
+![D](https://user-images.githubusercontent.com/81240334/204345675-a3ef35e3-1f8c-46a3-8f60-1c82ed9edd2f.jpg)
+> - D1 adalah penggabungan subnet A2 dengan C1 dengan netmask /20
+> - D2 adalah penggabungan subnet A10 dengan C2 dengan netmask /21
+> - D3 adalah penggabungan subnet A12 dengan C3 dengan netmask /23
+
+![E](https://user-images.githubusercontent.com/81240334/204345676-f225edb8-80a9-4154-a2c3-71424aaa3a12.jpg)
+> - E1 adalah penggabungan subnet A5 dengan D1 dengan netmask /19
+> - E2 adalah penggabungan subnet A7 dengan D2 dengan netmask /20
+
+![F](https://user-images.githubusercontent.com/81240334/204347884-431b9e4b-46ac-483a-b547-db5ffea5b109.jpg)
+> - F1 adalah penggabungan subnet D3 dengan E2 dengan netmask /19
+
+![G](https://user-images.githubusercontent.com/81240334/204345691-f46a3187-0d84-4b36-b613-9a8ffea282fd.jpg)
+> - G1 adalah penggabungan subnet A6 dengan E1 dengan netmask /18
+> - G2 adalah penggabungan subnet A11 dengan F1 dengan netmask /18
+> - G3 adalah penggabungan subnet A13 dengan A14 dengan netmask /22
+
+![H](https://user-images.githubusercontent.com/81240334/204345693-7f9983e8-a0bc-43d6-b3ec-fe1f18538cbd.jpg)
+> - H1 adalah penggabungan subnet A17 dengan G3 dengan netmask /21
+
+![I](https://user-images.githubusercontent.com/81240334/204345696-ba5cbf89-f605-4d50-a207-18cb8cd211f2.jpg)
+> - I1 adalah penggabungan subnet H1 dengan G1 dengan netmask /17
+
+![J](https://user-images.githubusercontent.com/81240334/204345703-82f6fd70-9397-43b6-9a4a-e4b42ea390a2.jpg)
+> - J1 adalah penggabungan subnet I1 dengan G2 dengan netmask /16
+
+Dari proses penggabungan yang telah dilakukan, didapatkan sebuah subnet besar dengan netmask /16 dan NID 10.19.0.0. Selanjutnya menghitung pembagian IP dengan pohon berdasarkan penggabungan subnet.
+
+xxx
+
+Berdasarkan penghitungan, maka didapatkan pembagian IP sebagai berikut.
+
 
 ## Konfigurasi Node di GNS3
-- **The Minister**
-    ```
-    auto lo
-    iface lo inet loopback
-
-    auto eth0
-    iface eth0 inet static
-    address 10.19.136.2
-    netmask 255.255.255.252
-    gateway 10.19.136.1
-
-    auto eth1
-    iface eth1 inet static
-    address 10.19.133.1
-    netmask 255.255.255.252
-
-    auto eth2
-    iface eth2 inet static
-    address 10.19.128.1
-    netmask 255.255.252.0
-    ```
-
-- **The Dauntless**
-    ```
-    auto lo
-    iface lo inet loopback
-
-    auto eth0
-    iface eth0 inet static
-    address 10.19.133.2
-    netmask 255.255.255.252
-    gateway 10.19.133.1
-
-    auto eth1
-    iface eth1 inet static
-    address 10.19.132.1
-    netmask 255.255.255.0
-    ``` 
-
-- **The Order**
-    ```
-    auto lo
-    iface lo inet loopback
-
-    auto eth0
-    iface eth0 inet static
-    address 10.19.160.2
-    netmask 255.255.255.252
-    gateway 10.19.160.1
-
-    auto eth1
-    iface eth1 inet static
-    address 10.19.136.1
-    netmask 255.255.255.252
-
-    auto eth2
-    iface eth2 inet static
-    address 10.19.144.1
-    netmask 255.255.255.192
-    ``` 
-
-- **The Instrument**
-    ```
-    auto lo
-    iface lo inet loopback
-
-    auto eth0
-    iface eth0 inet static
-    address 10.19.32.2
-    netmask 255.255.255.252
-    gateway 10.19.32.1
-
-    auto eth1
-    iface eth1 inet static
-    address 10.19.17.1
-    netmask 255.255.255.252
-
-    auto eth2
-    iface eth2 inet static
-    address 10.19.4.1
-    netmask 255.255.255.252
-
-    auto eth3
-    iface eth3 inet static
-    address 10.19.8.1
-    netmask 255.255.255.128
-    ``` 
-
-- **The Perfomance**
-    ```
-    auto lo
-    iface lo inet loopback
-
-    auto eth0
-    iface eth0 inet dhcp
-
-    auto eth1
-    iface eth1 inet static
-    address 10.19.68.1
-    netmask 255.255.255.252
-
-    auto eth2
-    iface eth2 inet static
-    address 10.19.66.1
-    netmask 255.255.255.252
-
-    auto eth3
-    iface eth3 inet static
-    address 10.19.32.1
-    netmask 255.255.255.252
-
-    auto eth4
-    iface eth4 inet static
-    address 10.19.160.1
-    netmask 255.255.255.252
-    ``` 
-
-- **The Firefist**
-    ```
-    auto lo
-    iface lo inet loopback
-
-    auto eth0
-    iface eth0 inet static
-    address 10.19.4.2
-    netmask 255.255.255.252
-    gateway 10.19.4.1
-
-    auto eth1
-    iface eth1 inet static
-    address 10.19.2.1
-    netmask 255.255.254.0
-
-    auto eth2
-    iface eth2 inet static
-    address 10.19.0.1
-    netmask 255.255.255.0
-    ```
-
-- **The Queen**
-    ```
-    auto lo
-    iface lo inet loopback
-
-    auto eth0
-    iface eth0 inet static
-    address 10.19.0.2
-    netmask 255.255.255.0
-    gateway 10.19.0.1
-
-    auto eth1
-    iface eth1 inet static
-    address 10.19.1.1
-    netmask 255.255.255.252
-    ```
-
-- **The Magical**
-    ```
-    auto lo
-    iface lo inet loopback
-
-    auto eth0
-    iface eth0 inet static
-    address 10.19.66.2
-    netmask 255.255.255.252
-    gateway 10.19.66.1
-
-    auto eth1
-    iface eth1 inet static
-    address 10.19.64.1
-    netmask 255.255.254.0
-    ```
-
-- **The Profound**
-    ```
-    auto lo
-    iface lo inet loopback
-
-    auto eth0
-    iface eth0 inet static
-    address 10.19.17.2
-    netmask 255.255.255.252
-    gateway 10.19.17.1
-
-    auto eth1
-    iface eth1 inet static
-    address 10.19.16.1
-    netmask 255.255.255.128
-
-    auto eth2
-    iface eth2 inet static
-    address 10.19.16.129
-    netmask 255.255.255.128
-    ```
-
-- **Haines**
-    ```
-    auto eth0
-    iface eth0 inet static
-    address 10.19.64.2
-    netmask 255.255.254.0
-    gateway 10.19.64.1
-    ```
-
-- **Corveks**
-    ```
-    auto eth0
-    iface eth0 inet static
-    address 10.19.64.3
-    netmask 255.255.254.0
-    gateway 10.19.64.1
-    ```
-
-- **The Beast**
-    ```
-    auto eth0
-    iface eth0 inet static
-    address 10.19.68.2
-    netmask 255.255.255.252
-    gateway 10.19.68.1
-    ```
-
-- **Ashaf**
-    ```
-    auto eth0
-    iface eth0 inet static
-    address 10.19.144.2
-    netmask 255.255.255.192
-    gateway 10.19.144.1
-    ```
-
-- **Guidessau**
-    ```
-    auto eth0
-    iface eth0 inet static
-    address 10.19.128.2
-    netmask 255.255.252.0
-    gateway 10.19.128.1
-    ```
-
-- **Johan**
-    ```
-    auto eth0
-    iface eth0 inet static
-    address 10.19.132.3
-    netmask 255.255.255.0
-    gateway 10.19.132.1
-    ```
-
-- **Phanora**
-    ```
-    auto eth0
-    iface eth0 inet static
-    address 10.19.132.2
-    netmask 255.255.255.0
-    gateway 10.19.132.1
-    ```
-
-- **Matt Cugat**
-    ```
-    auto eth0
-    iface eth0 inet static
-    address 10.19.8.2
-    netmask 255.255.255.128
-    gateway 10.19.8.1
-    ```
-
-- **Helga**
-    ```
-    auto eth0
-    iface eth0 inet static
-    address 10.19.16.130
-    netmask 255.255.255.128
-    gateway 10.19.16.129
-    ```
-
-- **Spendrow**
-    ```
-    auto eth0
-    iface eth0 inet static
-    address 10.19.16.2
-    netmask 255.255.255.128
-    gateway 10.19.16.1
-    ```
-
-- **Oakleave**
-    ```
-    auto eth0
-    iface eth0 inet static
-    address 10.19.2.2
-    netmask 255.255.254.0
-    gateway 10.19.2.1
-    ```
-
-- **Keith**
-    ```
-    auto eth0
-    iface eth0 inet static
-    address 10.19.0.3
-    netmask 255.255.255.0
-    gateway 10.19.0.1
-    ```
-
-- **The Witch**
-    ```
-    auto eth0
-    iface eth0 inet static
-    address 10.19.1.2
-    netmask 255.255.255.252
-    gateway 10.19.1.1
-    ```
-
-
-
-
-
-
-
-## Routing pada GNS3   
-- **The Minister**
-    ```
-    route add -net 0.0.0.0 netmask 0.0.0.0 gw 10.19.136.1
-
-    route add -net 10.19.132.0 netmask 255.255.255.0 gw 10.19.133.2
-    ```
-
-- **The Dauntless**
-    ```
-    route add -net 0.0.0.0 netmask 0.0.0.0 gw 10.19.133.1
-    ``` 
-
-- **The Order**
-    ```
-    route add -net 0.0.0.0 netmask 0.0.0.0 gw 10.19.160.1
-
-    route add -net 10.19.128.0 netmask 255.255.252.0 gw 10.19.136.2
-    route add -net 10.19.133.0 netmask 255.255.255.252 gw 10.19.136.2
-    route add -net 10.19.132.0 netmask 255.255.255.0 gw 10.19.136.2
-    ``` 
-
-- **The Instrument**
-    ```
-    route add -net 0.0.0.0 netmask 0.0.0.0 gw 10.19.32.1
-
-    route add -net 10.19.16.0 netmask 255.255.255.128 gw 10.19.17.2
-    route add -net 10.19.16.128 netmask 255.255.255.128 gw 10.19.17.2
-
-    route add -net 10.19.2.0 netmask 255.255.254.0 gw 10.19.4.2
-    route add -net 10.19.0.0 netmask 255.255.255.0 gw 10.19.4.2
-    route add -net 10.19.1.0 netmask 255.255.255.252 gw 10.19.4.2
-    ``` 
-
-- **The Perfomance**
-    ```
-    route add -net 10.19.144.0 netmask 255.255.255.192 gw 10.19.160.2
-    route add -net 10.19.136.0 netmask 255.255.255.252 gw 192.178.160.2
-    route add -net 10.19.128.0 netmask 255.255.252.0 gw 192.178.160.2
-    route add -net 10.19.133.0 netmask 255.255.255.252 gw 192.178.160.2
-    route add -net 10.19.132.0 netmask 255.255.255.0 gw 192.178.160.2
-
-    route add -net 10.19.64.0 netmask 255.255.254.0 gw 192.178.66.2
-
-    route add -net 10.19.8.0 netmask 255.255.255.128 gw 10.19.32.2
-    route add -net 10.19.17.0 netmask 255.255.255.252 gw 10.19.32.2
-    route add -net 10.19.16.0 netmask 255.255.255.128 gw 10.19.32.2
-    route add -net 10.19.16.128 netmask 255.255.255.128 gw 10.19.32.2
-    route add -net 10.19.4.0 netmask 255.255.255.252 gw 10.19.32.2
-    route add -net 10.19.2.0 netmask 255.255.254.0 gw 10.19.32.2
-    route add -net 10.19.0.0 netmask 255.255.255.0 gw 10.19.32.2
-    route add -net 10.19.1.0 netmask 255.255.255.252 gw 10.19.32.2
-    ``` 
-
-- **The Firefist**
-    ```
-    route add -net 0.0.0.0 netmask 0.0.0.0 gw 10.19.4.1
-
-    route add -net 10.19.1.0 netmask 255.255.255.252 gw 10.19.0.2
-    ```
-
-- **The Queen**
-    ```
-    route add -net 0.0.0.0 netmask 0.0.0.0 gw 10.19.0.1
-    ```
-
-- **The Magical**
-    ```
-    route add -net 0.0.0.0 netmask 0.0.0.0 gw 10.19.66.1
-    ```
-
-- **The Profound**
-    ```
-    route add -net 0.0.0.0 netmask 0.0.0.0 gw 10.19.17.1
-    ```
-
