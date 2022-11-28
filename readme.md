@@ -19,6 +19,7 @@ Kendala:
  ## CPT - VLSM
   ### Pembagian Subnet
   ![Topologi](https://user-images.githubusercontent.com/90826711/204214112-3abe256e-463f-418e-b5e6-5f4701f30fad.png)
+  ![Subnet](https://user-images.githubusercontent.com/90826711/204217945-15a7f87b-7203-4b17-8857-29f2c18879c5.jpg)
 
   ### Perhitungan subnet
   <img width="183" alt="image" src="https://user-images.githubusercontent.com/73109893/203556405-eb786e6a-7510-49f2-b771-49eecad16077.png">
