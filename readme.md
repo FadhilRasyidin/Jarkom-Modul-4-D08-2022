@@ -24,7 +24,7 @@ Kendala:
   ![Subnet](https://user-images.githubusercontent.com/90826711/204217945-15a7f87b-7203-4b17-8857-29f2c18879c5.jpg)
 
   ### VLSM Tree
-  ![VLSM Tree](https://user-images.githubusercontent.com/73109893/203556653-f56c19d3-b2c9-4077-9a4d-6714488d0301.png)
+  ![VLSM Tree](https://user-images.githubusercontent.com/90826711/204221537-88113b89-d299-4abd-8486-40f3999c5d63.png)
 
   ### Pembagian IP
   ![VLSM Table](https://user-images.githubusercontent.com/90826711/204216618-c7934b11-18c1-432d-a3a2-1d8a258a6225.jpg)
