@@ -31,6 +31,9 @@ Kendala:
 
   ### Routing
   #### Subnet
+  Setelah dilakukan subnetting maka satu node dengan node lainnya akan terhubung seperti gambar
+  ![CPT](https://user-images.githubusercontent.com/90826711/204238402-aea1c30c-54b4-4db5-bc22-718f68389557.png)
+
 
 # GNS3 - CIDR
 ![Topologi](https://user-images.githubusercontent.com/90826711/204237344-512187d4-90b3-4689-9dc5-6f97ae98c052.png)
